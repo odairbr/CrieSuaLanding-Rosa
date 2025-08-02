@@ -32,7 +32,9 @@ const Header = () => {
 
         <div className="flex items-center space-x-6">
           {/* Cart Widget */}
-          <CartWidget />
+          <Link href='/carrinho'>
+            <CartWidget />
+          </Link>
 
           {/* Login Button */}
           <Login />

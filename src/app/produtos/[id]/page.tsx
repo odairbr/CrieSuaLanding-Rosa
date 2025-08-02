@@ -10,13 +10,14 @@ import { Label } from "@/components/ui/label";
 import { useCart } from "@/contexts/cart";
 import { Button } from "@/components/ui/button";
 import { MinusCircleIcon, PlusCircleIcon } from "lucide-react";
+import Item from "@/components/Item";
 
 
 
 export default function ProductPage() {
   const params = useParams();
   const [product, setProduct] = useState<ProductProps>()
-  const { addToCart, removeFromCart } = useCart()
+  const { addToCart, removeFromCart, cart } = useCart()
 
   useEffect(() => {
     async function fetchProduct() {
@@ -57,6 +58,7 @@ export default function ProductPage() {
       </div>
     );
   }
+  const i = cart[0]
 
   return (
     <div className="bg-white/95 backdrop-blur-sm border-b border-amber-100 top-0 z-50 p-8">
@@ -116,6 +118,12 @@ export default function ProductPage() {
                     <MinusCircleIcon />
                   </Button>
                 </span>
+              </div>
+              <div>
+                {i ?
+                  <Item key={i.id} item={i}  />
+                  : ''
+                }
               </div>
             </div>
           </div>
